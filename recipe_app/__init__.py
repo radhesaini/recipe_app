@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///recipes.db'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
