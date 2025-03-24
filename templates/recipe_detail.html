@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}{{ recipe.title }}{% endblock %} {%
+block content %}
+<h1>{{ recipe.title }}</h1>
+<p>{{ recipe.description }}</p>
+<p>Ingredients: {{ recipe.ingredients }}</p>
+<p>Instructions: {{ recipe.instructions }}</p>
+<p>Posted by {{ recipe.author.username }}</p>
+<p>Posted on: {{ recipe.created_at.strftime('%Y-%m-%d') }}</p>
+
+<div>
+  <h2>Ratings</h2>
+  <ul>
+    {% for rating in ratings %}
+    <li>{{ rating.rater.username }}: {{ rating.rating }}</li>
+    {% endfor %}
+  </ul>
+  <form method="POST" action="">
+    {{ rating_form.hidden_tag() }} {{ rating_form.rating.label }} {{
+    rating_form.rating }} {{ rating_form.submit_rating() }}
+  </form>
+</div>
+
+<div>
+  <h2>Comments</h2>
+  <ul>
+    {% for comment in comments %}
+    <li>{{ comment.commenter.username }}: {{ comment.comment }}</li>
+    {% endfor %}
+  </ul>
+  <form method="POST" action="">
+    {{ comment_form.hidden_tag() }} {{ comment_form.comment.label }} {{
+    comment_form.comment }} {{ comment_form.submit_comment() }}
+  </form>
+</div>
+{% endblock %}

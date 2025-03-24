@@ -1,2 +1,3 @@
-# recipe_app
+# recipes_app
+
 it's flask full stack app
